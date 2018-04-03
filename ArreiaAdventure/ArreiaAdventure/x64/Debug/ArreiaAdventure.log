@@ -1,0 +1,58 @@
+﻿E:\program\Visual Studio\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: 중간 디렉터리(x64\Debug\)에 다른 프로젝트(Project1.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
+  main.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\main.cpp(2): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  TileObject.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\sprite.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  TileCell.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\sprite.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Texture.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\gamesystem.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  State.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\sprite.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Sprite.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\sprite.cpp(1): fatal error C1083: 포함 파일을 열 수 없습니다. 'reader.h': No such file or directory
+  ResourceManager.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\texture.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  RecoveryItem.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\map.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Player.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\map.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  PathfindingldeState.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\map.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  PathfindingState.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\map.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  PathfindingMoveState.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\character.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  PathfindingImmedateState.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\character.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  PathfinderPlayer.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\map.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  PathfinderMonster.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\map.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  NPC.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\map.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  MoveState.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\map.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Monster.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\map.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Map.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\gamesystem.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  IdleState.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\character.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  GameSystem.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\gamesystem.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Frame.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\gamesystem.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Font.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\gamesystem.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  DefenseState.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\character.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  DeadState.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\sprite.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Character.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\map.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  AttackState.cpp
+p:\제작\포트폴리오\directx\adventure\gameproject\gameproject\arreiaadventure\arreiaadventure\character.h(3): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  코드를 생성하고 있습니다...
