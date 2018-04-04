@@ -58,6 +58,7 @@ void Character::Init(std::wstring textureFilename, std::wstring scriptFilename)
 
 	// font
 	//InitFont();
+	
 	{
 		_font = new Font(L"Arial", 15, D3DCOLOR_ARGB(255, 0, 0, 0));
 		_font->SetRect(_position.x - 100, _position.y - 30, 200, 50);
@@ -66,6 +67,8 @@ void Character::Init(std::wstring textureFilename, std::wstring scriptFilename)
 		wsprintf(text, L"HP %d", _hp);
 		_font->SetText(text);
 	}
+	
+
 
 	InitState(textureFilename, scriptFilename);
 	ChangeState(eStateType::ST_IDLE);
@@ -106,6 +109,7 @@ void Character::Render()
 {
 	_state->Render();
 	_font->SetPosition(_position.x - 100, _position.y - 50);
+
 	_font->Render();
 }
 
@@ -179,10 +183,6 @@ void Character::ChangeState(eStateType stateType)
 	_state->Start();
 }
 
-void Character::SetAttackDirection(TilePoint tilePosition)
-{
-	_attackDirection = tilePosition;
-}
 
 void Character::UpdateAI(float deltaTime)
 {

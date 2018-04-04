@@ -38,8 +38,9 @@ void MoveState::Start()
 			newTilePosition.y++; 
 			break;
 		}
-		// 공격 방향 지정 
-		_character->SetAttackDirection(newTilePosition);
+		
+
+
 		//
 		if (eDirection::NONE != _character->GetNextDirection())
 		{
@@ -48,17 +49,20 @@ void MoveState::Start()
 
 		if (newTilePosition.x != _character->GetTilePosition().x || newTilePosition.y != _character->GetTilePosition().y)
 		{
+			std::vector<Component*> attackCollisionList = map->GetTileCollisionList(newTilePosition);
 			std::vector<Component*> collisionList = map->GetTileCollisionList(newTilePosition);
+
 			if (0 < collisionList.size())
 			{
-				std::vector<Component*> enemyList = _character->Collision(collisionList);
+				 
+				std::vector<Component*> enemyList = _character->Collision(attackCollisionList);
 				if (0 < enemyList.size() && _character->IsAttackCooltime())
 				{ 
 					_character->ResetAttackCooltime();
 					_character->SetTarget(enemyList);
 					_nextState = eStateType::ST_ATTACK;
 				}
-				else
+				else 
 				{
 					_nextState = eStateType::ST_IDLE;
 				}

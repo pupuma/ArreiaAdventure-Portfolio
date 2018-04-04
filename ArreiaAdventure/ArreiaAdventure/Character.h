@@ -28,7 +28,6 @@ class Character : public Component
 {
 protected:
 	eDirection _currentDirection;
-	TilePoint _attackDirection;
 public:
 	Character(std::wstring name);
 	~Character();
@@ -65,7 +64,7 @@ public:
 	void ChangeState(eStateType stateType);
 
 public:
-	void SetAttackDirection(TilePoint tilePosition);
+
 	// AI
 protected:
 	float _moveTime;

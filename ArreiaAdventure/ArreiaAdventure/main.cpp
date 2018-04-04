@@ -187,7 +187,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, 
 	tilePosition.y = map->GetHeight() / 2 + 2;
 	TileCell* tileCell = map->GetTileCell(tilePosition);
 	Component* midTileObject = tileCell->GetComponentList().front();
-	map->SetViewer(midTileObject);
+	map->SetViewer(character);
 
 
 
