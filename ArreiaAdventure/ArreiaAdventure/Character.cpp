@@ -56,7 +56,8 @@ void Character::Init(std::wstring textureFilename, std::wstring scriptFilename)
 				tilePos.y = map->GetHeight() /2;
 			}
 			_tilePosition = tilePos;
-			
+			_nextAttackPosition = tilePos;
+
 			map->SetTileComponent(_tilePosition, this);
 		}		
 	}

@@ -53,7 +53,7 @@ void MoveState::Start()
 
 		if (newTilePosition.x != _character->GetTilePosition().x || newTilePosition.y != _character->GetTilePosition().y)
 		{
-			std::vector<Component*> collisionList = map->GetTileCollisionList(newTilePosition);
+			std::vector<Component*> collisionList = map->GetTileCollisionList(nextAttackPosition);
 
 			if (0 < collisionList.size())
 			{
@@ -63,6 +63,7 @@ void MoveState::Start()
 				{ 
 					_character->ResetAttackCooltime();
 					_character->SetTarget(enemyList);
+
 					_nextState = eStateType::ST_ATTACK;
 				}
 				else 
