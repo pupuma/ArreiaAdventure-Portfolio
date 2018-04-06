@@ -50,6 +50,11 @@ void Character::Init(std::wstring textureFilename, std::wstring scriptFilename)
 				tilePos.x = rand() % map->GetWidth();
 				tilePos.y = rand() % map->GetHeight();
 			}
+			if (scriptFilename == L"player")
+			{
+				tilePos.x = map->GetWidth() /2;
+				tilePos.y = map->GetHeight() /2;
+			}
 			_tilePosition = tilePos;
 			
 			map->SetTileComponent(_tilePosition, this);
@@ -183,7 +188,10 @@ void Character::ChangeState(eStateType stateType)
 	_state->Start();
 }
 
-
+TilePoint Character::GetNextAttackPosition()
+{
+	return _nextAttackPosition;
+}
 void Character::UpdateAI(float deltaTime)
 {
 }

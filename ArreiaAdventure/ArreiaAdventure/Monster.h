@@ -8,6 +8,7 @@ class Monster : public Character
 public:
 	Monster(std::wstring name);
 	~Monster();
+public:
 
 public:
 	void UpdateAI(float deltaTime);

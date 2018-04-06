@@ -52,6 +52,7 @@ void State::CreateSprite(std::wstring textureFilename, std::wstring scriptFilena
 		sprite->Init(textureFilename, script);
 		_spriteList.push_back(sprite);
 	}
+
 	{
 		// left
 		std::wstring script = scriptFilename;

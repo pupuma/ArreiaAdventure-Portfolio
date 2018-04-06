@@ -225,7 +225,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, 
 			{
 				frameDuration = 0;
 
-				device3d->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(124, 124, 124), 0.0f, 0);
+				device3d->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 0.0f, 0);
 				{
 					device3d->BeginScene();
 					{

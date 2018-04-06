@@ -1,9 +1,6 @@
 #include "ComponentSystem.h"
 #include "Map.h"
-
-
 #include "InputSystem.h"
-
 #include "PathfindingldeState.h"
 #include "PathfindingState.h"
 #include "PathfindingImmedateState.h"

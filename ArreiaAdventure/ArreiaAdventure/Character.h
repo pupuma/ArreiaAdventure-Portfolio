@@ -62,8 +62,10 @@ protected:
 public:
 	virtual void InitState(std::wstring textureFilename, std::wstring scriptFilename);
 	void ChangeState(eStateType stateType);
-
+private:
+	TilePoint _nextAttackPosition;
 public:
+	TilePoint GetNextAttackPosition();
 
 	// AI
 protected:

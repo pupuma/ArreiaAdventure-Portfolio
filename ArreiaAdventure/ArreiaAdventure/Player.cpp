@@ -17,6 +17,8 @@ Player::~Player()
 
 }
 
+
+
 void Player::UpdateAI(float deltaTime)
 {
 	if (false == _isLive)

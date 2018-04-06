@@ -427,13 +427,15 @@ bool Map::IsConnectedCell(int tileX, int tileY)
 void Map::SetViewer(Component* component)
 {
 	_viewer = component;
-	_prevViewTilePositon = _viewer->GetTilePosition();
+	_prevViewTilePositon = _viewer->GetTilePosition() ;
 }
 
 void Map::UpdateViewer(float deltaTime)
 {
 	if (NULL == _viewer)
+	{
 		return;
+	}
 
 	if (_prevViewTilePositon.x != _viewer->GetTilePosition().x ||
 		_prevViewTilePositon.y != _viewer->GetTilePosition().y)
@@ -484,7 +486,9 @@ std::vector<Component*> Map::GetTileCollisionList(TilePoint tilePosition)
 	// 범위 체크 (맵 안에 있는지)
 	if (tilePosition.x < 0 || GetWidth() <= tilePosition.x ||
 		tilePosition.y < 0 || GetHeight() <= tilePosition.y)
+	{
 		return collisiontArray;
+	}
 
 	std::list<Component*> tileCollisionList = GetTileCell(tilePosition)->GetCollisionList();
 	for (std::list<Component*>::iterator it = tileCollisionList.begin();
