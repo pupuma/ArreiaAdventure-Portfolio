@@ -66,7 +66,7 @@ private:
 	TilePoint _nextAttackPosition;
 public:
 	TilePoint GetNextAttackPosition();
-
+	void SetNextAttackPosition(TilePoint tilePoint);
 	// AI
 protected:
 	float _moveTime;
@@ -106,6 +106,10 @@ public:
 	bool IsAttackCooltime();
 	void ResetAttackCooltime();
 
+	// Direction
+public:
+	virtual std::vector<Component*> Detection(std::vector<Component*> detectionList);
+
 	// Damage
 private:
 	int _damagePoint;
@@ -117,7 +121,7 @@ public:
 	// Item
 public:
 	void EatItem();
-
+	void AttackAreaCheck();
 	// UI
 private:
 	Font* _font;

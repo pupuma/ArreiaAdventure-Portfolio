@@ -57,7 +57,10 @@ void Character::Init(std::wstring textureFilename, std::wstring scriptFilename)
 			}
 			_tilePosition = tilePos;
 			_nextAttackPosition = tilePos;
-
+			if (_currentDirection == eDirection::LEFT)
+			{
+				_nextAttackPosition.x--;
+			}
 			map->SetTileComponent(_tilePosition, this);
 		}		
 	}
@@ -193,6 +196,11 @@ TilePoint Character::GetNextAttackPosition()
 {
 	return _nextAttackPosition;
 }
+
+void Character::SetNextAttackPosition(TilePoint tilePoint)
+{
+	_nextAttackPosition = tilePoint;
+}
 void Character::UpdateAI(float deltaTime)
 {
 }
@@ -258,6 +266,12 @@ void Character::ResetAttackCooltime()
 	_attackCooltimeDuration = 0.0f;
 }
 
+std::vector<Component*> Character::Detection(std::vector<Component*> detectionList)
+{
+	return detectionList;
+}
+
+
 void Character::DecreaseHP(int damagePoint)
 {
 	_hp -= damagePoint;
@@ -281,6 +295,29 @@ void Character::EatItem()
 			msg.receiver = item;
 			msg.message = L"Use";
 			ComponentSystem::GetInstance()->SendMsg(msg);
+		}
+	}
+}
+
+void Character::AttackAreaCheck()
+{
+	Map* map = (Map*)ComponentSystem::GetInstance()->FindComponent(L"Map");
+	if (NULL != map)
+	{
+		Component* attackTarget = map->FindAttackRangeTile(_nextAttackPosition);
+ 		if (NULL != attackTarget)
+		{
+			std::vector<Component*> targetList = GetTargetList();
+			for (int i = 0; i < targetList.size(); i++)
+			{
+				// 적이면 공격
+				sMessageParam param;
+				param.sender = this;
+				param.receiver = targetList[i];
+				param.message = L"Attack";
+				param.attackPoint = GetAttackPoint();
+				ComponentSystem::GetInstance()->SendMsg(param);
+			}
 		}
 	}
 }

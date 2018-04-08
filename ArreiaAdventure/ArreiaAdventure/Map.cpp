@@ -661,7 +661,19 @@ Component* Map::FindItemInTile(TilePoint tilePosition)
 	}
 	return NULL;
 }
-
+Component* Map::FindAttackRangeTile(TilePoint tilePosition)
+{
+	std::vector<Component*> componentList = GetTileDetectionList(tilePosition);
+	for (int i = 0; i < componentList.size(); i++)
+	{
+		Component* component = componentList[i];
+		if (eComponentType::CT_MONSTER == component->GetType())
+		{
+			return component;
+		}
+	}
+	return NULL;
+}
 void Map::MoveLeft()
 {
 	_startX--;
@@ -694,4 +706,24 @@ void Map::ResetPahtfinding()
 			GetTileCell(tilePosition)->ResetPathfinding();
 		}
 	}
+}
+
+std::vector<Component*> Map::GetTileDetectionList(TilePoint tilePosition)
+{
+	std::vector<Component*> detectiontArray;
+
+	// 범위 체크 (맵 안에 있는지)
+	if (tilePosition.x < 0 || GetWidth() <= tilePosition.x ||
+		tilePosition.y < 0 || GetHeight() <= tilePosition.y)
+	{
+		return detectiontArray;
+	}
+
+ 	std::list<Component*> tileDetectionList = GetTileCell(tilePosition)->GetDetectionList();
+	for (std::list<Component*>::iterator it = tileDetectionList.begin();
+		it != tileDetectionList.end(); it++)
+	{
+		detectiontArray.push_back((*it));
+	}
+	return detectiontArray;
 }

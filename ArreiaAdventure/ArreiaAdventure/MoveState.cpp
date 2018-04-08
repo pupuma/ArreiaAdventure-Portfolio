@@ -22,46 +22,51 @@ void MoveState::Start()
 	if (NULL != map)
 	{
 		TilePoint newTilePosition = _character->GetTilePosition();
+
+		// <
 		TilePoint nextAttackPosition = _character->GetNextAttackPosition();
 		switch (_character->GetNextDirection())
 		{
 		case eDirection::LEFT:
 			newTilePosition.x--; 
-			nextAttackPosition.x -=2;
+			nextAttackPosition.x--;
 			break;
 		case eDirection::RIGHT:	
 			newTilePosition.x++; 
-			nextAttackPosition.x += 2;
+			nextAttackPosition.x++;
 			break;
 		case eDirection::UP:
 			newTilePosition.y--; 
-			nextAttackPosition.y -= 2;
+			nextAttackPosition.y--;
 			break;
 		case eDirection::DOWN:	
 			newTilePosition.y++; 
-			nextAttackPosition.y += 2;
+			nextAttackPosition.y++;
+
 			break;
 		}
-		
-
-
+		// >
 		//
+
 		if (eDirection::NONE != _character->GetNextDirection())
 		{
 			_character->SetDirection(_character->GetNextDirection());
+			_character->SetNextAttackPosition(nextAttackPosition);
+
 		}
 
 		if (newTilePosition.x != _character->GetTilePosition().x || newTilePosition.y != _character->GetTilePosition().y)
 		{
-			std::vector<Component*> collisionList = map->GetTileCollisionList(nextAttackPosition);
+			//std::vector<Component*> collisionList = map->GetTileCollisionList(newTilePosition);
+			std::vector<Component*> collisionList = map->GetTileDetectionList(nextAttackPosition);
 
 			if (0 < collisionList.size())
 			{
-				 
-				std::vector<Component*> enemyList = _character->Collision(collisionList);
+				//std::vector<Component*> enemyList = _character->Collision(collisionList);
+				std::vector<Component*> enemyList = _character->Detection(collisionList);
 				if (0 < enemyList.size() && _character->IsAttackCooltime())
 				{ 
-					_character->ResetAttackCooltime();
+ 					_character->ResetAttackCooltime();
 					_character->SetTarget(enemyList);
 
 					_nextState = eStateType::ST_ATTACK;

@@ -52,6 +52,9 @@ void Player::UpdateAI(float deltaTime)
 			if (InputSystem::GetInstance()->IsKeyDown(VK_SPACE))
 			{
 				EatItem();
+				//스페이스 눌렀을때 공격범위를 확인한다.
+				AttackAreaCheck();
+
 			}
 			
 			if (eDirection::NONE != _nextDirection)
@@ -70,6 +73,19 @@ std::vector<Component*> Player::Collision(std::vector<Component*> collisionList)
 		if (eComponentType::CT_MONSTER == collisionList[i]->GetType())
 		{
 			filterList.push_back(collisionList[i]);
+		}
+	}
+	return filterList;
+}
+
+std::vector<Component*> Player::Detection(std::vector<Component*> detectionList)
+{
+	std::vector<Component*> filterList;
+	for (int i = 0; i < detectionList.size(); i++)
+	{
+		if (eComponentType::CT_MONSTER == detectionList[i]->GetType())
+		{
+			filterList.push_back(detectionList[i]);
 		}
 	}
 	return filterList;

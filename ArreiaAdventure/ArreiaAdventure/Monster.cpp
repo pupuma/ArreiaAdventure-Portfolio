@@ -36,12 +36,16 @@ void Monster::UpdateAI(float deltaTime)
 			
 			// 적이 있으면 적 방향으로 이동
 			_nextDirection = eDirection::NONE;
+			eDirection monsterDirection = eDirection::NONE;
+			TilePoint tilePos = GetNextAttackPosition();
+			
 			if (NULL != findComponent)
 			{
 				TilePoint targetPosition = findComponent->GetTilePosition();
 				if (targetPosition.y < _tilePosition.y)
 				{
 					_nextDirection = eDirection::UP;
+					
 				}
 				else if (_tilePosition.y < targetPosition.y)
 				{
@@ -59,11 +63,46 @@ void Monster::UpdateAI(float deltaTime)
 				{
 					_nextDirection = (eDirection)(rand() % 4);
 				}
+				switch (monsterDirection)
+				{
+				case eDirection::LEFT:
+					tilePos.x--;
+					break;
+				case eDirection::RIGHT:
+					tilePos.x++;
+					break;
+				case eDirection::UP:
+					tilePos.y--;
+					break;
+				case eDirection::DOWN:
+					tilePos.y++;
+					break;
+				}
+					
 			}	
 			else
 			{
 				_nextDirection = (eDirection)(rand() % 4);
 			}
+
+			switch (monsterDirection)
+			{
+			case eDirection::LEFT:
+				tilePos.x--;
+				break;
+			case eDirection::RIGHT:
+				tilePos.x++;
+				break;
+			case eDirection::UP:
+				tilePos.y--;
+				break;
+			case eDirection::DOWN:
+				tilePos.y++;
+				break;
+			}
+
+			SetNextAttackPosition(tilePos);
+
 			if (eDirection::NONE != _nextDirection)
 			{
 				_state->ChangeState(eStateType::ST_MOVE);

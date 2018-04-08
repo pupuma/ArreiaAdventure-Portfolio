@@ -37,7 +37,9 @@ public:
 	std::list<Component*> GetComponentList() { return _componentList; }
 
 	bool CanMove();
-
+	// Detection
+public:
+	std::list<Component*> GetDetectionList();
 	// TilePosition
 private:
 	TilePoint _tilePostion;

@@ -15,7 +15,6 @@ void AttackState::Start()
 {
 	State::Start();
 
-
 	std::vector<Component*> targetList = _character->GetTargetList();
 	for (int i = 0; i < targetList.size(); i++)
 	{

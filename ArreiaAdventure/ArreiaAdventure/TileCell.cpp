@@ -90,3 +90,18 @@ bool TileCell::CanMove()
 	}
 	return true;
 }
+
+std::list<Component*> TileCell::GetDetectionList()
+{
+	std::list<Component*> detectionList;
+	for (std::list<Component*>::iterator it = _componentList.begin();
+		it != _componentList.end();
+		it++)
+	{
+		if (false == (*it)->CanMove())
+		{
+			detectionList.push_back((*it));
+		}
+	}
+	return detectionList;
+}
