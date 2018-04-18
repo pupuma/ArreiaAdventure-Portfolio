@@ -74,6 +74,8 @@ public:
 	std::vector<Component*> GetTileComponentList(TilePoint tilePosition);
 
 	Component* FindItemInTile(TilePoint tilePosition);
+	Component* FindEnemyTile(TilePoint tilePosition);
+
 	Component* FindAttackRangeTile(TilePoint tilePosition);
 
 	void MoveLeft();

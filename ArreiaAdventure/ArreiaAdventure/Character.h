@@ -40,20 +40,6 @@ public:
 	void Release();
 	void Reset();
 
-	eDirection GetDirection() { return _currentDirection; }
-	
-	// Common Info
-protected:
-	int _hp;
-	int _attackPoint;
-
-public:
-	int GetAttackPoint() { return _attackPoint; }
-
-	// Message
-public:
-	void ReceiveMsg(const sMessageParam& param);
-
 	// State
 protected:
 	std::map<eStateType, State*> _stateMap;
@@ -62,11 +48,22 @@ protected:
 public:
 	virtual void InitState(std::wstring textureFilename, std::wstring scriptFilename);
 	void ChangeState(eStateType stateType);
-private:
-	TilePoint _nextAttackPosition;
 public:
-	TilePoint GetNextAttackPosition();
-	void SetNextAttackPosition(TilePoint tilePoint);
+	eDirection GetDirection();
+	
+	// Common Info
+protected:
+	int _hp;
+	int _attackPoint;
+
+public:
+	int GetAttackPoint();
+
+	// Message
+public:
+	void ReceiveMsg(const sMessageParam& param);
+
+
 	// AI
 protected:
 	float _moveTime;
@@ -80,19 +77,19 @@ public:
 	virtual void UpdateAI(float deltaTime);
 	void MoveStart(TilePoint newTilePosition);
 	void MoveStop();
-	bool IsMoving() { return _isMoving; }
-	float GetMoveTime() { return _moveTime; }
+	bool IsMoving();
+	float GetMoveTime();
 
-	void SetDirection(eDirection direction) { _currentDirection = direction; }
-	eDirection GetNextDirection() { return _nextDirection; }
+	void SetDirection(eDirection direction);
+	eDirection GetNextDirection();
 
 	virtual std::vector<Component*> Collision(std::vector<Component*> collisionList);
 
-	void SetTarget(std::vector<Component*> targetList) { _targetList = targetList; }
-	std::vector<Component*> GetTargetList() { return _targetList; }
-	void ResetTarget() { _targetList.clear(); }
+	void SetTarget(std::vector<Component*> targetList);
+	std::vector<Component*> GetTargetList();
+	void ResetTarget();
 
-	void PushPathfindingCell(TileCell* tileCell) { _pathfindingCellStack.push(tileCell); }
+	void PushPathfindingCell(TileCell* tileCell);
 	TileCell* PopPathfindingCell();
 	bool IsEmptyPathfindingStack();
 
@@ -106,34 +103,36 @@ public:
 	bool IsAttackCooltime();
 	void ResetAttackCooltime();
 
-	// Direction
+	// Attack
+private:
+	TilePoint _nextAttackPosition;
 public:
-	virtual std::vector<Component*> Detection(std::vector<Component*> detectionList);
+	TilePoint GetAttackTilePosition();
+	void SetAttackPosition(TilePoint nextAttackPosition);
+	TilePoint GetNextAttackPosition();
+	virtual std::vector<Component*>Detection(std::vector<Component*>  detectionList);
+	//void AttackEnemy();
+	void DetectionStart(TilePoint newAttackTilePosition);
 
 	// Damage
 private:
 	int _damagePoint;
 
 public:
-	int GetDamagePoint() { return _damagePoint; }
+	int GetDamagePoint();
 	void DecreaseHP(int damagePoint);
 
 	// Item
 public:
 	void EatItem();
-	void AttackAreaCheck();
 	// UI
 private:
 	Font* _font;
-
 	// Pathfinding
 protected:
 	TileCell* _targetTileCell;
 
 public:
-	void SetTargetTileCell(TileCell* targetTileCell)
-	{
-		_targetTileCell = targetTileCell;
-	}
-	TileCell* GetTargetTileCell() { return _targetTileCell; }
+	void SetTargetTileCell(TileCell* targetTileCell);
+	TileCell* GetTargetTileCell();
 };

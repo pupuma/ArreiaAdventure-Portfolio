@@ -661,6 +661,21 @@ Component* Map::FindItemInTile(TilePoint tilePosition)
 	}
 	return NULL;
 }
+Component* Map::FindEnemyTile(TilePoint tilePosition)
+{
+	std::vector<Component*> componentList = GetTileComponentList(tilePosition);
+	for (int i = 0; i < componentList.size(); i++)
+	{
+		Component* component = componentList[i];
+		if (eComponentType::CT_ITEM == component->GetType())
+		{
+			return component;
+		}
+	}
+	return NULL;
+}
+
+
 Component* Map::FindAttackRangeTile(TilePoint tilePosition)
 {
 	std::vector<Component*> componentList = GetTileDetectionList(tilePosition);

@@ -2,7 +2,8 @@
 
 #include "State.h"
 
-class DefenseState : public State
+class DefenseState
+	: public State
 {
 public:
 	DefenseState(Character* character);

@@ -36,8 +36,6 @@ void Monster::UpdateAI(float deltaTime)
 			
 			// 적이 있으면 적 방향으로 이동
 			_nextDirection = eDirection::NONE;
-			eDirection monsterDirection = eDirection::NONE;
-			TilePoint tilePos = GetNextAttackPosition();
 			
 			if (NULL != findComponent)
 			{
@@ -63,21 +61,7 @@ void Monster::UpdateAI(float deltaTime)
 				{
 					_nextDirection = (eDirection)(rand() % 4);
 				}
-				switch (monsterDirection)
-				{
-				case eDirection::LEFT:
-					tilePos.x--;
-					break;
-				case eDirection::RIGHT:
-					tilePos.x++;
-					break;
-				case eDirection::UP:
-					tilePos.y--;
-					break;
-				case eDirection::DOWN:
-					tilePos.y++;
-					break;
-				}
+				
 					
 			}	
 			else
@@ -85,23 +69,7 @@ void Monster::UpdateAI(float deltaTime)
 				_nextDirection = (eDirection)(rand() % 4);
 			}
 
-			switch (monsterDirection)
-			{
-			case eDirection::LEFT:
-				tilePos.x--;
-				break;
-			case eDirection::RIGHT:
-				tilePos.x++;
-				break;
-			case eDirection::UP:
-				tilePos.y--;
-				break;
-			case eDirection::DOWN:
-				tilePos.y++;
-				break;
-			}
-
-			SetNextAttackPosition(tilePos);
+			
 
 			if (eDirection::NONE != _nextDirection)
 			{
@@ -120,6 +88,21 @@ std::vector<Component*> Monster::Collision(std::vector<Component*> collisionList
 			eComponentType::CT_PLAYER == collisionList[i]->GetType())
 		{
 			filterList.push_back(collisionList[i]);
+		}
+	}
+	return filterList;
+}
+
+
+std::vector<Component*> Monster::Detection(std::vector<Component*> detectionList)
+{
+	std::vector<Component*> filterList;
+	for (int i = 0; i < detectionList.size(); i++)
+	{
+		if (eComponentType::CT_NPC == detectionList[i]->GetType() ||
+			eComponentType::CT_PLAYER == detectionList[i]->GetType())
+		{
+			filterList.push_back(detectionList[i]);
 		}
 	}
 	return filterList;

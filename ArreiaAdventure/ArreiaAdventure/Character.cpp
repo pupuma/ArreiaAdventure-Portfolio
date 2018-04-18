@@ -14,7 +14,8 @@
 
 Character::Character(std::wstring name) : Component(name)
 {
-	_position.x = _position.y = 0.0f;
+	_position.x = 0.0f;
+	_position.y = 0.0f;
 
 	_state = NULL;
 	_moveTime = (float)(rand() % 100 + 50) / 100.0f;
@@ -50,17 +51,12 @@ void Character::Init(std::wstring textureFilename, std::wstring scriptFilename)
 				tilePos.x = rand() % map->GetWidth();
 				tilePos.y = rand() % map->GetHeight();
 			}
-			if (scriptFilename == L"player")
-			{
-				tilePos.x = map->GetWidth() /2;
-				tilePos.y = map->GetHeight() /2;
-			}
+		
 			_tilePosition = tilePos;
+
 			_nextAttackPosition = tilePos;
-			if (_currentDirection == eDirection::LEFT)
-			{
-				_nextAttackPosition.x--;
-			}
+	
+
 			map->SetTileComponent(_tilePosition, this);
 		}		
 	}
@@ -77,8 +73,7 @@ void Character::Init(std::wstring textureFilename, std::wstring scriptFilename)
 		_font->SetText(text);
 	}
 	
-
-
+	
 	InitState(textureFilename, scriptFilename);
 	ChangeState(eStateType::ST_IDLE);
 }
@@ -101,6 +96,9 @@ void Character::Deinit()
 		delete _font;
 		_font = NULL;
 	}
+
+	//
+
 }
 
 void Character::Update(float deltaTime)
@@ -112,6 +110,8 @@ void Character::Update(float deltaTime)
 	int coolTime = (int)(_attackCooltimeDuration * 1000.0f);
 	wsprintf(text, L"HP %d\n%d", _hp, coolTime);
 	_font->SetText(text);
+
+
 }
 
 void Character::Render()
@@ -120,36 +120,26 @@ void Character::Render()
 	_font->SetPosition(_position.x - 100, _position.y - 50);
 
 	_font->Render();
+
+	
 }
 
 void Character::Release()
 {
 	_font->Release();
 	_state->Release();
+
+	
 }
 
 void Character::Reset()
 {
 	_font->Reset();
 	_state->Reset();
+
+	
 }
 
-void Character::ReceiveMsg(const sMessageParam& param)
-{
-	if (L"Attack" == param.message)
-	{
-		_damagePoint = param.attackPoint;
-		_state->ChangeState(eStateType::ST_DEFENSE);
-	}
-	if (L"RecoveryHP" == param.message)
-	{
-		_hp += param.recoveryHP;
-		if (100 < _hp)
-		{
-			_hp = 100;
-		}
-	}
-}
 
 void Character::InitState(std::wstring textureFilename, std::wstring scriptFilename)
 {
@@ -191,20 +181,35 @@ void Character::ChangeState(eStateType stateType)
 	_state = _stateMap[stateType];
 	_state->Start();
 }
-
-TilePoint Character::GetNextAttackPosition()
+eDirection Character::GetDirection() 
 {
-	return _nextAttackPosition;
+	return _currentDirection; 
+}
+int Character::GetAttackPoint()
+{
+	return _attackPoint; 
 }
 
-void Character::SetNextAttackPosition(TilePoint tilePoint)
+void Character::ReceiveMsg(const sMessageParam& param)
 {
-	_nextAttackPosition = tilePoint;
+	if (L"Attack" == param.message)
+	{
+		_damagePoint = param.attackPoint;
+		_state->ChangeState(eStateType::ST_DEFENSE);
+	}
+	if (L"RecoveryHP" == param.message)
+	{
+		_hp += param.recoveryHP;
+		if (100 < _hp)
+		{
+			_hp = 100;
+		}
+	}
 }
+
 void Character::UpdateAI(float deltaTime)
 {
 }
-
 void Character::MoveStart(TilePoint newTilePosition)
 {
 	Map* map = (Map*)ComponentSystem::GetInstance()->FindComponent(L"Map");
@@ -222,12 +227,43 @@ void Character::MoveStop()
 {
 	_isMoving = false;
 }
+bool Character::IsMoving() 
+{
+	return _isMoving; 
+}
+float Character::GetMoveTime()
+{
+	return _moveTime; 
+}
+void Character::SetDirection(eDirection direction) 
+{
+	_currentDirection = direction; 
+}
+eDirection Character::GetNextDirection() 
+{ 
+	return _nextDirection; 
+}
 
 std::vector<Component*> Character::Collision(std::vector<Component*> collisionList)
 {
 	return collisionList;
 }
-
+void Character::SetTarget(std::vector<Component*> targetList) 
+{
+	_targetList = targetList; 
+}
+std::vector<Component*> Character::GetTargetList() 
+{
+	return _targetList; 
+}
+void Character::ResetTarget()
+{
+	_targetList.clear();
+}
+void Character::PushPathfindingCell(TileCell* tileCell)
+{
+	_pathfindingCellStack.push(tileCell);
+}
 TileCell* Character::PopPathfindingCell()
 {
 	TileCell* tileCell = _pathfindingCellStack.top();
@@ -243,6 +279,7 @@ bool Character::IsEmptyPathfindingStack()
 	}
 	return true;
 }
+
 
 void Character::UpdateAttackCooltime(float deltaTime)
 {
@@ -266,11 +303,51 @@ void Character::ResetAttackCooltime()
 	_attackCooltimeDuration = 0.0f;
 }
 
-std::vector<Component*> Character::Detection(std::vector<Component*> detectionList)
+TilePoint Character::GetAttackTilePosition()
+{
+	return _nextAttackPosition;
+}
+void Character::SetAttackPosition(TilePoint nextAttackPosition)
+{
+	_nextAttackPosition = nextAttackPosition;
+}
+TilePoint Character::GetNextAttackPosition()
+{
+	return _nextAttackPosition;
+}
+
+std::vector<Component*> Character::Detection(std::vector<Component*>  detectionList)
 {
 	return detectionList;
 }
+/*
+void Character::AttackEnemy()
+{
+	Map* map = (Map*)ComponentSystem::GetInstance()->FindComponent(L"Map");
+	if (NULL != map)
+	{
+		Component* enemy = map->FindEnemyTile(_nextAttackPosition);
+		if (NULL != enemy)
+		{
+			sMessageParam msg;
+			msg.sender = this;
+			msg.receiver = enemy;
+			msg.message = L"attack";
+			ComponentSystem::GetInstance()->SendMsg(msg);
+		}
+	}
+}
+*/
+void Character::DetectionStart(TilePoint newAttackTilePosition)
+{
+	SetAttackPosition(newAttackTilePosition);
+}
 
+
+int Character::GetDamagePoint() 
+{
+	return _damagePoint; 
+}
 
 void Character::DecreaseHP(int damagePoint)
 {
@@ -299,25 +376,11 @@ void Character::EatItem()
 	}
 }
 
-void Character::AttackAreaCheck()
+void Character::SetTargetTileCell(TileCell* targetTileCell)
 {
-	Map* map = (Map*)ComponentSystem::GetInstance()->FindComponent(L"Map");
-	if (NULL != map)
-	{
-		Component* attackTarget = map->FindAttackRangeTile(_nextAttackPosition);
- 		if (NULL != attackTarget)
-		{
-			std::vector<Component*> targetList = GetTargetList();
-			for (int i = 0; i < targetList.size(); i++)
-			{
-				// 적이면 공격
-				sMessageParam param;
-				param.sender = this;
-				param.receiver = targetList[i];
-				param.message = L"Attack";
-				param.attackPoint = GetAttackPoint();
-				ComponentSystem::GetInstance()->SendMsg(param);
-			}
-		}
-	}
+	_targetTileCell = targetTileCell;
+}
+TileCell* Character::GetTargetTileCell()
+{
+	return _targetTileCell; 
 }

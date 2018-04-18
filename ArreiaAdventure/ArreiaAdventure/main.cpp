@@ -180,8 +180,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, 
 	Character* monster = new Monster(L"monster");
 	monster->Init(L"monster_sprite_pack.png", L"npc");
 	stageComponentList.push_back(monster);
-	
 
+	WCHAR name[256];
+	int i = 1;
+	wsprintf(name, L"npc%d", i);
+	Character* npc = new NPC(name);
+	npc->Init(L"character_sprite_pack.png", L"npc");
+	stageComponentList.push_back(npc);
+	/*
+	for (int i = 0; i < 10; i++)
+	{
+		WCHAR name[256];
+		wsprintf(name, L"npc%d", i);
+		Character* npc = new NPC(name);
+		npc->Init(L"character_sprite_pack.png", L"npc");
+		stageComponentList.push_back(npc);
+	}
+	*/
 	TilePoint tilePosition;
 	tilePosition.x = map->GetWidth() / 2;
 	tilePosition.y = map->GetHeight() / 2 + 2;
