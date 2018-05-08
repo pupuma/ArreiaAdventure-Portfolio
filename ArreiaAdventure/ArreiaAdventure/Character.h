@@ -103,16 +103,9 @@ public:
 	bool IsAttackCooltime();
 	void ResetAttackCooltime();
 
-	// Attack
-private:
-	TilePoint _nextAttackPosition;
-public:
-	TilePoint GetAttackTilePosition();
-	void SetAttackPosition(TilePoint nextAttackPosition);
-	TilePoint GetNextAttackPosition();
-	virtual std::vector<Component*>Detection(std::vector<Component*>  detectionList);
-	//void AttackEnemy();
-	void DetectionStart(TilePoint newAttackTilePosition);
+	// Selection
+	void Selection();
+
 
 	// Damage
 private:

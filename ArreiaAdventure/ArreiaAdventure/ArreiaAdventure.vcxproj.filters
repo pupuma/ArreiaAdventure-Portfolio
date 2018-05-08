@@ -203,9 +203,6 @@
     <ClInclude Include="IdleState.h">
       <Filter>소스 파일\Game\Character\State</Filter>
     </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>소스 파일\Game\Character\State</Filter>
-    </ClInclude>
     <ClInclude Include="AttackState.h">
       <Filter>소스 파일\Game\Character\State</Filter>
     </ClInclude>
@@ -235,6 +232,9 @@
     </ClInclude>
     <ClInclude Include="PathfindingState.h">
       <Filter>소스 파일\Game\Character\PathfinderCharacter\PathfinderState</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>소스 파일\Game\Character\State</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

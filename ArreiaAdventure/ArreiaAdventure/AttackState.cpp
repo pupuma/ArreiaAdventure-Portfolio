@@ -25,6 +25,7 @@ void AttackState::Start()
 		param.message = L"Attack";
 		param.attackPoint = _character->GetAttackPoint();
 		ComponentSystem::GetInstance()->SendMsg(param);
+		
 	}
 }
 

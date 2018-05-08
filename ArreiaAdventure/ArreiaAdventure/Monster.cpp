@@ -93,17 +93,3 @@ std::vector<Component*> Monster::Collision(std::vector<Component*> collisionList
 	return filterList;
 }
 
-
-std::vector<Component*> Monster::Detection(std::vector<Component*> detectionList)
-{
-	std::vector<Component*> filterList;
-	for (int i = 0; i < detectionList.size(); i++)
-	{
-		if (eComponentType::CT_NPC == detectionList[i]->GetType() ||
-			eComponentType::CT_PLAYER == detectionList[i]->GetType())
-		{
-			filterList.push_back(detectionList[i]);
-		}
-	}
-	return filterList;
-}

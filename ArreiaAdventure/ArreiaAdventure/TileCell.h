@@ -39,7 +39,7 @@ public:
 	bool CanMove();
 	// Detection
 public:
-	std::list<Component*> GetDetectionList();
+	
 	// TilePosition
 private:
 	TilePoint _tilePostion;

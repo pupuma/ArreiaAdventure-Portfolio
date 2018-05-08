@@ -1,16 +1,23 @@
 ﻿  Player.cpp
-p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\player.cpp(70): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-  NPC.cpp
-p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\npc.cpp(105): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-  MoveState.cpp
-  Monster.cpp
-p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\monster.cpp(85): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\monster.cpp(100): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Map.cpp
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(51): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(52): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(60): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(477): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(478): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(544): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(582): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(583): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(616): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(617): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(618): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(619): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(654): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(667): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   Character.cpp
-p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\character.cpp(69): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\character.cpp(120): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  AttackState.cpp
-p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\attackstate.cpp(19): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\character.cpp(68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\character.cpp(119): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   코드를 생성하고 있습니다...
+p:\제작\포트폴리오\directx\arreia\arreiaadventure-portfolio\arreiaadventure\arreiaadventure\map.cpp(676): warning C4715: 'Map::FindCharacterInTile': 모든 제어 경로에서 값을 반환하지는 않습니다.
   ArreiaAdventure.vcxproj -> P:\제작\포트폴리오\DirectX\Arreia\ArreiaAdventure-Portfolio\ArreiaAdventure\Debug\ArreiaAdventure.exe
   ArreiaAdventure.vcxproj -> P:\제작\포트폴리오\DirectX\Arreia\ArreiaAdventure-Portfolio\ArreiaAdventure\Debug\ArreiaAdventure.pdb (Partial PDB)

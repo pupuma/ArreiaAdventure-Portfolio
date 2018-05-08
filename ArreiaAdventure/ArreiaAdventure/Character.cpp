@@ -54,7 +54,6 @@ void Character::Init(std::wstring textureFilename, std::wstring scriptFilename)
 		
 			_tilePosition = tilePos;
 
-			_nextAttackPosition = tilePos;
 	
 
 			map->SetTileComponent(_tilePosition, this);
@@ -303,47 +302,27 @@ void Character::ResetAttackCooltime()
 	_attackCooltimeDuration = 0.0f;
 }
 
-TilePoint Character::GetAttackTilePosition()
-{
-	return _nextAttackPosition;
-}
-void Character::SetAttackPosition(TilePoint nextAttackPosition)
-{
-	_nextAttackPosition = nextAttackPosition;
-}
-TilePoint Character::GetNextAttackPosition()
-{
-	return _nextAttackPosition;
-}
-
-std::vector<Component*> Character::Detection(std::vector<Component*>  detectionList)
-{
-	return detectionList;
-}
-/*
-void Character::AttackEnemy()
+void Character::Selection()
 {
 	Map* map = (Map*)ComponentSystem::GetInstance()->FindComponent(L"Map");
 	if (NULL != map)
 	{
-		Component* enemy = map->FindEnemyTile(_nextAttackPosition);
-		if (NULL != enemy)
+		//Component* item = map->FindItemInTile(_tilePosition);
+		
+		Component* character = map->FindCharacterInTile(_tilePosition);
+		if (NULL != character)
 		{
-			sMessageParam msg;
-			msg.sender = this;
-			msg.receiver = enemy;
-			msg.message = L"attack";
-			ComponentSystem::GetInstance()->SendMsg(msg);
+			if (eComponentType::CT_MONSTER == character->GetType())
+			{
+				ChangeState(eStateType::ST_ATTACK);
+			}
+			else if (eComponentType::CT_NPC == character->GetType())
+			{
+
+			}
 		}
 	}
 }
-*/
-void Character::DetectionStart(TilePoint newAttackTilePosition)
-{
-	SetAttackPosition(newAttackTilePosition);
-}
-
-
 int Character::GetDamagePoint() 
 {
 	return _damagePoint; 
@@ -384,3 +363,5 @@ TileCell* Character::GetTargetTileCell()
 {
 	return _targetTileCell; 
 }
+
+

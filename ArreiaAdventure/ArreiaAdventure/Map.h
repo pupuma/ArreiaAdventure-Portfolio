@@ -74,9 +74,9 @@ public:
 	std::vector<Component*> GetTileComponentList(TilePoint tilePosition);
 
 	Component* FindItemInTile(TilePoint tilePosition);
-	Component* FindEnemyTile(TilePoint tilePosition);
+	Component* FindCharacterInTile(TilePoint tilePosition);
 
-	Component* FindAttackRangeTile(TilePoint tilePosition);
+
 
 	void MoveLeft();
 	void MoveRight();
@@ -87,8 +87,6 @@ public:
 public:
 	void ResetPahtfinding();
 
-	// Detection
-public:
-	std::vector<Component*> GetTileDetectionList(TilePoint tilePosition);
+
 
 };

@@ -52,6 +52,7 @@ void Player::UpdateAI(float deltaTime)
 			if (InputSystem::GetInstance()->IsKeyDown(VK_SPACE))
 			{
 				EatItem();
+				Selection();
 				//스페이스 눌렀을때 공격범위를 확인한다.
 				//AttackEnemy();
 			}
@@ -64,6 +65,7 @@ void Player::UpdateAI(float deltaTime)
 	}
 }
 
+/*
 std::vector<Component*> Player::Collision(std::vector<Component*> collisionList)
 {
 	std::vector<Component*> filterList;
@@ -75,27 +77,5 @@ std::vector<Component*> Player::Collision(std::vector<Component*> collisionList)
 		}
 	}
 	return filterList;
-}
-
-/*
-std::vector<Component*> Player::Detection(std::vector<Component*> detectionList)
-{
-	Map* map = (Map*)ComponentSystem::GetInstance()->FindComponent(L"Map");
-	if (NULL != map)
-	{
-		if (InputSystem::GetInstance()->IsKeyDown(VK_SPACE))
-		{
-			std::vector<Component*> filterList;
-			for (int i = 0; i < detectionList.size(); i++)
-			{
-				if (eComponentType::CT_NPC == detectionList[i]->GetType() ||
-					eComponentType::CT_MONSTER == detectionList[i]->GetType())
-				{
-					filterList.push_back(detectionList[i]);
-				}
-			}
-			return filterList;
-		}
-	}
 }
 */
